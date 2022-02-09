@@ -1,0 +1,33 @@
+<div><iframe id="UniqueID" src="https://..." width=100% height=600px allowfullscreen style="resize: vertical"></iframe>
+<p><button class="btn btn-primary" onclick="fullScreenToggle('UniqueID')">Vollbildmodus</button></p></div>
+
+
+<script>
+
+// How does this work?
+// Chose URL for Iframe and add it above.
+// Use a unique Id, replace UniqueID
+// Add tags if needed, tested with Boost and standard course format.
+
+// Hides navigation elements of target site in Moodle
+document.querySelector("#UniqueID").addEventListener( "load", function(event) {
+    var iframe = document.getElementById("UniqueID");
+    tags = ["nav.fixed-top","header","#nav-drawer","#group_menu","blocks-column",".activity-navigation","footer"]  
+    tags.forEach(hideElement);
+    function hideElement(item)
+      {
+      var element = iframe.contentWindow.document.querySelector(item);
+      if (element) element.style.display = "none";
+      }   
+} );
+
+// Adds fullscreen mode
+function fullScreenToggle(idOfElement)
+  {
+  var elem = document.getElementById(idOfElement);
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  }
+}
+
+</script>
